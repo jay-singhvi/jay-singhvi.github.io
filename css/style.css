@@ -87,28 +87,6 @@ body {
   font-family: 'Montserrat';
 }
 
-/* h3 {
-  color: var(--text-color);
-}
-
-.colorlib-narrow-content h3 {
-  color: var(--text-color);
-}
-
-.services h3 {
-  color: var(--text-color);
-}
-
-/* Timeline content visibility */
-/* .timeline-label h3 {
-  color: var(--text-color);
-}
-
-/* Section descriptions */
-/* .second .fixed-content h3 {
-  color: var(--text-color);
-} */
- */ */
 /* Card content */
 .card-content {
   color: var(--text-color);
@@ -119,24 +97,102 @@ body {
   color: var(--text-color);
 }
 
+
 .second {
   background-color: var(--header-bg);
   background: #eee;
-  color: #888;
   width: 100%;
+  color: #000000;  /* This overrides the #888 color */
 }
 
 .timeline-label {
   background-color: var(--card-bg) !important;
-  color: var(--text-color) !important;
+   /* color: var(--text-color) !important; */
 }
 
+/* Style for timeline entry links */
+.timeline-label h2 a {
+  color: var(--link-color);  /* Uses the existing link color variable */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.timeline-label h2 a:hover {
+  color: #66b1ff;  /* Lighter blue on hover */
+  text-decoration: underline;
+}
+
+/* Style for project type links */
+.timeline-label p strong a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.timeline-label p strong a:hover {
+  color: #66b1ff;
+  text-decoration: underline;
+}
+
+/* Update these rules in your style.css file */
+
+/* Higher specificity for timeline links */
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 a {
+  color: #4a9eff !important; /* Using a direct color value for testing */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 a:hover {
+  color: #66b1ff !important;
+  text-decoration: underline;
+}
+
+/* Project type links */
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p strong a {
+  color: #4a9eff !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p strong a:hover {
+  color: #66b1ff !important;
+  text-decoration: underline;
+}
+
+/* Override any general link colors in the timeline */
+.timeline-centered a {
+  color: #4a9eff !important;
+}
+
+
+/* Update the services section styling */
 .services {
   background-color: var(--card-bg);
-  color: var(--text-color);
+  color: #ffffff;  /* Set the default text color to white */
 }
 
-/* Add other element styles using CSS variables */
+.services p {
+  color: #ffffff !important;  /* Force white color for paragraphs */
+}
+
+/* Ensure the heading stays distinct */
+.services h3 {
+  color: #ffffff;  /* Make the service titles white as well */
+  margin-bottom: 15px;
+}
+
+/* Add hover state for better interaction */
+.services:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+/* If you're using icons, make sure they remain visible */
+.services .icon2 {
+  color: #ffffff;
+}
+
 
 @font-face {
   font-family: 'Montserrat';
