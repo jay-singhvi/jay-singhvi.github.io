@@ -1,14 +1,150 @@
+/* Theme Switch Styles */
+.theme-switch-wrapper {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  width: 60px;
+  position: relative;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+  border-radius: 50%;
+}
+
+.slider .fa-sun-o,
+.slider .fa-moon-o {
+  color: #fff;
+  font-size: 16px;
+  position: absolute;
+  top: 8px;
+}
+
+.slider .fa-sun-o {
+  left: 8px;
+}
+
+.slider .fa-moon-o {
+  right: 8px;
+}
+
+input:checked + .slider {
+  background-color: #66b1ff;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+
+/* Dark Theme Colors */
+:root {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --header-bg: #1a1a1a;
+  --card-bg: #1e1e1e;
+  --border-color: #2d2d2d;
+  --link-color: #4a9eff;
+  --secondary-text: #e0e0e0;
+}
+
+/* Apply Theme Variables */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat';
+}
+
+/* h3 {
+  color: var(--text-color);
+}
+
+.colorlib-narrow-content h3 {
+  color: var(--text-color);
+}
+
+.services h3 {
+  color: var(--text-color);
+}
+
+/* Timeline content visibility */
+/* .timeline-label h3 {
+  color: var(--text-color);
+}
+
+/* Section descriptions */
+/* .second .fixed-content h3 {
+  color: var(--text-color);
+} */
+ */ */
+/* Card content */
+.card-content {
+  color: var(--text-color);
+}
+
+/* Service descriptions */
+.services .desc {
+  color: var(--text-color);
+}
+
+.second {
+  background-color: var(--header-bg);
+  background: #eee;
+  color: #888;
+  width: 100%;
+}
+
+.timeline-label {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+}
+
+.services {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* Add other element styles using CSS variables */
+
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
   src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459Wlhzg.ttf) format('truetype');
 }
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat';
-}
+
 i {
   color: #fff;
 }
@@ -19,27 +155,32 @@ i {
 }
 .fixed-content {
   width: auto;
-
   float: none;
   display: block;
   margin-right: auto;
   margin-left: auto;
   padding: 40px;
   text-align: center;
+  background-color: transparent;
 }
+
 .header {
-  background-image: url('../img/Wajima.jpg');
   background-repeat: no-repeat, repeat;
-  /*background-attachment: fixed;*/
   color: #FFF;
   max-height: 500px;
   height: 100%;
 }
+
 .header .port {
   border-radius: 50%;
   border: 6px #ccc solid;
   width: 16%;
+
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
 }
+
 .icon-row {
   margin: 45px auto;
   width: 100%;
@@ -56,11 +197,7 @@ i {
   background: #FFF;
   color: #ca5549;
 }
-.second {
-  background: #eee;
-  color: #888;
-  width: 100%;
-}
+
 #portfolio h2,
 #contact h2 {
   font-size: 40px;
