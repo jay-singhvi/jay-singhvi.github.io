@@ -236,24 +236,6 @@ i {
   z-index: 2;
   background-color: transparent;
 }
-
-.icon-row {
-  margin: 45px auto;
-  width: 100%;
-}
-.icon-row i {
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 44px;
-  margin: 0px 20px;
-  padding: 20px 30px;
-  transition: all 400ms ease-in-out;
-}
-.icon-row i:hover {
-  background: #FFF;
-  color: #ca5549;
-}
-
 #portfolio h2,
 #contact h2 {
   font-size: 40px;
@@ -351,4 +333,47 @@ i {
       justify-content: center;
       gap: 8px;
   }
+}
+
+.icon-row {
+  margin: 45px auto;
+  width: 100%;
+}
+.icon-row i {
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 44px;
+  margin: 0px 20px;
+  /* padding: 20px 30px; */
+  transition: all 400ms ease-in-out;
+}
+.icon-row i:hover {
+  background: #FFF;
+  color: #ca5549;
+}
+
+.icon-row a {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 10px;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.icon-row a:hover {
+  color: #4d79ff; /* Or whatever highlight color matches your theme */
+  transform: translateY(-2px);
+}
+
+.icon-row a i {
+  font-size: 18px;
+  margin-right: 6px;
+}
+
+.icon-row a span {
+  margin-left: 5px;
 }

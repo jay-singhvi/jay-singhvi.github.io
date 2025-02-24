@@ -7,5 +7,20 @@ $(document).ready(function(){
     });
 });
 
-// inspired by 
-// https://dribbble.com/shots/920939-Portfolio-Redesign-2013-early-stage?list=searches&tag=portfolio&offset=22
+function openResumeModal() {
+    document.getElementById('resumeModal').style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+}
+
+function closeResumeModal() {
+    document.getElementById('resumeModal').style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restore scrolling
+}
+
+// Close the modal if user clicks outside the content
+window.onclick = function(event) {
+    const modal = document.getElementById('resumeModal');
+    if (event.target == modal) {
+        closeResumeModal();
+    }
+}
