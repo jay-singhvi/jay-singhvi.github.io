@@ -42,8 +42,56 @@
             </div>
         </div>
 
-        <section class="colorlib-about" data-section="about">
+        <!-- <section class="colorlib-about" data-section="about">
             <div class="container">
+                <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+                    <h2>Projects</h2>
+                    <hr>
+                </div>
+            <div class="row">
+                    <script type="text/javascript">
+                        var domains = ["Data Engineering", "Machine Learning", "Research", "Cloud Architecture"];
+                        var icons = ["database", "code", "university", "cloud"];
+                        var descriptions = [
+                            "Enterprise ETL, data pipelines, and warehouse solutions optimizing business intelligence operations",
+                            "AI applications, deep learning research, and practical ML implementations",
+                            "Published academic work in medical predictions, synthetic data and environmental analysis",
+                            "AWS infrastructure, containerization, and cloud-native application development"
+                        ];
+                        var urls = [
+                            "projects/data_engineering.html",
+                            "projects/machine_learning.html",
+                            "projects/research.html",
+                            "projects/cloud.html"
+                        ];
+                        var ids = [3, 4, 2, 1];
+                        for (let i = 0; i < domains.length; i++) {
+                            var dir = (ids[i] % 2 == 0) ? "Right" : "Left";
+                            document.write(
+                                '<div class="col-sm-3 animate-box" data-animate-effect="fadeIn' + dir + '">\
+                                  <a href="' + urls[i] + '" >\
+                                    <div class="services color-' + ids[i] + '">\
+                                      <span class="icon2"><i class="fa fa-' + icons[i] + '"></i></span>\
+                                      <h3>' + domains[i] + '</h3>\
+                                      <p>' + descriptions[i] + '</p>\
+                                    </div>\
+                                  </a>\
+                                </div>'
+                            );
+                        }
+                    </script>
+                </div>
+            </div>
+        </section> -->
+        <section class="colorlib-about" data-section="about">
+            <div class="colorlib-narrow-content">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+                        <h2>Projects</h2>
+                        <hr>
+                    </div>
+                </div>
+                <p class="animate-box" data-animate-effect="fadeInLeft">Showcasing expertise across multiple domains of data science and engineering.</p>
                 <div class="row">
                     <script type="text/javascript">
                         var domains = ["Data Engineering", "Machine Learning", "Research", "Cloud Architecture"];
