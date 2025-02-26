@@ -1,5 +1,5 @@
-$(document).ready(function(){
-  $('.fa-chevron-up').click(function () {
+$(document).ready(function () {
+    $('.fa-chevron-up').click(function () {
         $('body').animate({
             scrollTop: 0
         }, 400);
@@ -17,10 +17,22 @@ function closeResumeModal() {
     document.body.style.overflow = 'auto'; // Restore scrolling
 }
 
-// Close the modal if user clicks outside the content
-window.onclick = function(event) {
+window.onclick = function (event) {
     const modal = document.getElementById('resumeModal');
     if (event.target == modal) {
         closeResumeModal();
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.page-transition-link').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.body.classList.add('page-transitioning');
+
+            setTimeout(function () {
+                window.location.href = link.getAttribute('href');
+            }, 300);
+        });
+    });
+});
