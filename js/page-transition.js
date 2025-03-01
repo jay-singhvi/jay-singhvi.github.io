@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
   links.forEach(link => {
     if (!link.href.includes(window.location.hostname) ||
       link.getAttribute('target') === '_blank' ||
-      link.getAttribute('rel') === 'noopener noreferrer') {
+      link.getAttribute('rel') === 'noopener noreferrer' ||
+      link.href.startsWith('mailto:') ||
+      link.href.startsWith('tel:')) {
       return;
     }
 
