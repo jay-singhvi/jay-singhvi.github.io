@@ -1,0 +1,29 @@
+# Line-ending normalization.
+#
+# Without this, the whole tree showed up as modified on Windows: 7,443
+# insertions / 7,328 deletions that `git diff --ignore-all-space` reported as
+# empty. The repo stores LF and checks out LF everywhere, so the phantom diff
+# cannot come back.
+#
+# Existing files were brought in line once with `git add --renormalize .`.
+
+* text=auto eol=lf
+
+*.html text eol=lf
+*.css  text eol=lf
+*.js   text eol=lf
+*.json text eol=lf
+*.svg  text eol=lf
+*.md   text eol=lf
+*.txt  text eol=lf
+*.xml  text eol=lf
+
+# Binary assets: never touch, never diff as text.
+*.pdf   binary
+*.jpg   binary
+*.jpeg  binary
+*.png   binary
+*.webp  binary
+*.ico   binary
+*.woff  binary
+*.woff2 binary
