@@ -1,288 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Jay Singhvi | Portfolio</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="shortcut icon"
-            href="data:image/svg+xml,
-                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-                    <text y='0.9em' font-size='90' font-weight='bold' font-family='Arial' fill='%234682B4' x='50%' text-anchor='middle'>
-                        JS
-                    </text>
-                </svg>"
-            type="image/svg+xml" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Indie+Flower'>
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
-        <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/animate.css">
-        <link rel="stylesheet" href="css/flexslider.css">
-        <link rel="stylesheet" href="css/services.css">
-        <link rel="stylesheet" href="css/page-transitions.css">
-        <script type="text/javascript">
-            (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "qfpgkp21jx");
-        </script>
-    </head>
+<title>Jay Singhvi — Applied AI Engineer</title>
+<meta name="description" content="Applied AI engineer shipping production LLM systems into regulated enterprise workflows — automations live across Accounting, Tax, Legal, HR, Digital Marketing, and Asset Management at a 900-employee REIT.">
+<meta name="author" content="Jay Singhvi">
+<link rel="canonical" href="https://jay-singhvi.github.io/">
 
-    <body>
-        <div class="header">
-            <div class="fixed-content">
-                <img class="port" src="img/pic01.jpg">
-                <h2>Jay Singhvi</h2>
-                <p style="color:#fff;">Data Engineer | ML Researcher | Cloud Architect</p>
-                <div class="icon-row">
-                    <a href="https://github.com/jay-singhvi" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i><span>GitHub</span></a>
-                    <a href="https://www.linkedin.com/in/jay-singhvi/" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i><span>LinkedIn</span></a>
-                    <a href="https://scholar.google.com/citations?user=5BOLefYAAAAJ&hl=en" target="_blank" rel="noopener noreferrer"><i class="fa fa-graduation-cap"></i><span>Google Scholar</span></a>
-                    <a href="javascript:void(0)" onclick="openResumeModal()" title="View Resume"><i class="fa fa-file-text"></i><span>Resume</span></a>
-                    <a href="mailto:jay.singhvi@outlook.com"><i class="fa fa-envelope"></i><span>jay.singhvi@outlook.com</span></a>
-                    <a href="#"><i class="fa fa-phone"></i><span>206-660-3609</span></a>
-                </div>
-            </div>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jay Singhvi">
+<meta property="og:url" content="https://jay-singhvi.github.io/">
+<meta property="og:title" content="Jay Singhvi — Applied AI Engineer">
+<meta property="og:description" content="Production AI in workflows that cannot be wrong. Eight production systems across six departments at a 900-employee REIT.">
+<meta property="og:image" content="https://jay-singhvi.github.io/img/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Jay Singhvi, applied AI engineer — production AI in workflows that cannot be wrong.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jay Singhvi — Applied AI Engineer">
+<meta name="twitter:description" content="Production AI in workflows that cannot be wrong. Eight production systems across six departments at a 900-employee REIT.">
+<meta name="twitter:image" content="https://jay-singhvi.github.io/img/og-cover.jpg">
+
+<meta name="theme-color" content="#232326">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<link rel="preload" href="fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/public-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jay Singhvi",
+  "url": "https://jay-singhvi.github.io/",
+  "image": "https://jay-singhvi.github.io/img/og-cover.jpg",
+  "jobTitle": "Senior AI Analyst (Applied AI Engineering)",
+  "email": "mailto:jay.singhvi@outlook.com",
+  "telephone": "+1-206-660-3609",
+  "worksFor": { "@type": "Organization", "name": "Welltower Inc." },
+  "address": { "@type": "PostalPlace", "addressLocality": "Dallas", "addressRegion": "TX", "addressCountry": "US" },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Seattle University" },
+    { "@type": "CollegeOrUniversity", "name": "Symbiosis International University" },
+    { "@type": "CollegeOrUniversity", "name": "University of Mumbai" }
+  ],
+  "knowsAbout": ["Applied AI engineering", "Large language models", "Retrieval-augmented generation", "Data engineering", "Workflow automation"],
+  "sameAs": [
+    "https://www.linkedin.com/in/jay-singhvi/",
+    "https://github.com/jay-singhvi",
+    "https://scholar.google.com/citations?user=5BOLefYAAAAJ&hl=en"
+  ]
+}
+</script>
+
+<!-- Microsoft Clarity -->
+<script>
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "qfpgkp21jx");
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top">Jay Singhvi</a>
+    <div class="nav__links">
+      <a class="nav__link" href="#work">Work</a>
+      <a class="nav__link" href="#research">Research</a>
+      <a class="nav__link" href="#experience">Experience</a>
+      <a class="nav__link" href="#skills">Stack</a>
+      <a class="nav__link" href="#education">Education</a>
+    </div>
+    <div class="nav__actions">
+      <a class="nav__link" href="resume/Jay_Singhvi_Resume.pdf" target="_blank" rel="noopener">Resume<span class="badge" aria-hidden="true">PDF &#8595;</span></a>
+      <a class="btn btn-nav" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero" id="top">
+  <div class="hero__grid">
+    <div class="hero__text">
+      <p class="eyebrow hero__eyebrow">Applied AI engineer — Dallas, Texas</p>
+      <h1 class="display">Production AI in workflows that <em>cannot be wrong.</em></h1>
+      <div class="hero__wipe" aria-hidden="true"></div>
+      <p class="lede">Applied AI engineer shipping production LLM systems into regulated enterprise workflows — automations live across Accounting, Tax, Legal, HR, Digital Marketing, and Asset Management at a 900-employee REIT.</p>
+      <div class="hero__actions">
+        <a class="btn" href="#work">See selected work</a>
+        <a class="link-ul" href="resume/Jay_Singhvi_Resume.pdf" target="_blank" rel="noopener"><span class="lbl">Download the resume</span><span class="badge" aria-hidden="true">PDF &#8595;</span></a>
+      </div>
+    </div>
+    <div class="hero__portrait">
+      <div class="portrait">
+        <picture>
+          <source srcset="img/jay-singhvi.webp" type="image/webp">
+          <img src="img/jay-singhvi.jpg" alt="Jay Singhvi" width="640" height="640">
+        </picture>
+      </div>
+      <p class="hero__caption">Senior AI Analyst, Welltower Inc.<br>MS Computer Science, Seattle University.</p>
+    </div>
+  </div>
+</header>
+
+<section class="band" aria-label="Impact at a glance">
+  <div class="shell">
+    <div class="stats">
+      <div class="stat">
+        <div class="stat__value">~1 FTE</div>
+        <div class="stat__label">recovered annually by automating payroll tie-out</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value">~$100K</div>
+        <div class="stat__label">use tax penalty exposure resolved</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value">#1</div>
+        <div class="stat__label stat__label-wide">most-used internal GPT company-wide, six months running</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value">6</div>
+        <div class="stat__label">departments running systems I shipped</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band-teal" aria-label="Governing design principle">
+  <div class="principle">
+    <p class="eyebrow eyebrow-dark">Governing design principle</p>
+    <h2 class="h2-principle">Arithmetic and reconciliation stay in deterministic code. The model is confined to <em>extraction and classification.</em></h2>
+    <p class="intro intro-dark">Every system below is built so that an incorrect model inference cannot post to a ledger, file a return, or answer a policy question it does not have grounds for.</p>
+  </div>
+</section>
+
+<section class="section section-work" id="work">
+  <p class="eyebrow">Selected work — Welltower Inc.</p>
+  <h2 class="h2-xl h2-xl-tight">Eight production systems, six departments.</h2>
+  <p class="intro">Each one owned end-to-end, from department requirements through UAT, deployment, logging, and failure monitoring.</p>
+  <div class="rule rule-work" aria-hidden="true"></div>
+
+  <details class="case" data-panel="01" open>
+    <summary class="case__head">
+      <div class="case__num" aria-hidden="true">01</div>
+      <div class="case__body">
+        <h3 class="case__title">Webb — enterprise HR assistant</h3>
+        <p class="case__meta">Human Resources · ChatGPT custom GPT · OpenAI Compliance API · Snowflake</p>
+        <p class="case__blurb">The company-wide HR assistant, migrated off a legacy Slack bot and hardened against adversarial use.</p>
+      </div>
+      <div class="case__stat">
+        <div class="case__stat-value">85%</div>
+        <div class="case__stat-label">fewer HR support tickets</div>
+      </div>
+      <div class="case__toggle">
+        <span class="case__toggle-open">Read the Project Details</span>
+        <span class="case__toggle-close">Close</span>
+      </div>
+    </summary>
+    <div class="case__detail">
+      <ul class="case__points">
+        <li>Cut HR support tickets 85% by migrating the company-wide HR assistant from a legacy Slack bot to a ChatGPT custom GPT — 700 users (78% of a 900-employee organization), 200 monthly active users, 100+ daily queries, and the #1 most-used custom GPT company-wide for six months.</li>
+        <li>Held the assistant secure through emerging adversarial use across successive prompt revisions — injection red-flag patterns, identity lock, silent refusal of system-prompt disclosure, web search narrowed to checklist-gated cases, and the connector scoped to user identification.</li>
+        <li>Engineered out the silent-wrong-answer failure mode — a location gate withholds answers until the employee's region is known, routing only accurate information, and barring extrapolation from partial documents.</li>
+        <li>Shipped every revision defect-free by gating release on a regression suite and a 10-day Human Capital hallucination audit — cases pinning both correct and specific wrong responses across policy, regional routing, refusals, and injection attempts.</li>
+        <li>Built the AI governance layer on the OpenAI Compliance API, landing conversation data in Snowflake with a review frontend and human-in-the-loop flagging, now HR's standing weekly review.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="case" data-panel="02" open>
+    <summary class="case__head">
+      <div class="case__num" aria-hidden="true">02</div>
+      <div class="case__body">
+        <h3 class="case__title">Journal entry tie-out automation</h3>
+        <p class="case__meta">Accounting · n8n production workflows</p>
+        <p class="case__blurb">Payroll cash tie-out, journal entries, and suspense clearing — designed so the automation is structurally incapable of mutating the general ledger.</p>
+      </div>
+      <div class="case__stat">
+        <div class="case__stat-value">~1 FTE</div>
+        <div class="case__stat-label">recovered annually</div>
+      </div>
+      <div class="case__toggle">
+        <span class="case__toggle-open">Read the Project Details</span>
+        <span class="case__toggle-close">Close</span>
+      </div>
+    </summary>
+    <div class="case__detail">
+      <ul class="case__points">
+        <li>Recovered ~1 FTE annually by cutting payroll tie-out from 8 people at 6 hours weekly to a single exception reviewer at 4–5 hours — implementing payroll cash tie-out, payroll journal entries, and suspense item clearing as n8n production workflows, after documenting 25–30 undocumented processes across 5–6 departments as machine-readable specifications.</li>
+        <li>Designed reconciliation workflows structurally incapable of mutating the general ledger — phase one proposes changes (missing chart-of-accounts entries, mapping corrections) for human approval rather than applying them, making an incorrect automated inference impossible to post.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="case" data-panel="03" open>
+    <summary class="case__head">
+      <div class="case__num" aria-hidden="true">03</div>
+      <div class="case__body">
+        <h3 class="case__title">Use tax compliance automation</h3>
+        <p class="case__meta">Tax · n8n · Thomson Reuters tax code data</p>
+        <p class="case__blurb">Use tax determination for state, city, and county codes across 3,000+ invoices monthly and 1,500+ properties.</p>
+      </div>
+      <div class="case__stat">
+        <div class="case__stat-value">~$100K</div>
+        <div class="case__stat-label">penalty exposure resolved</div>
+      </div>
+      <div class="case__toggle">
+        <span class="case__toggle-open">Read the Project Details</span>
+        <span class="case__toggle-close">Close</span>
+      </div>
+    </summary>
+    <div class="case__detail">
+      <ul class="case__points">
+        <li>Resolved approximately $100K in use tax penalty exposure and established the standing control preventing recurrence across all operating jurisdictions — automating use tax determination for state, city, and county codes for 3,000+ invoices monthly across 1,500+ properties.</li>
+        <li>Eliminated a hallucination risk unacceptable in a compliance calculation — rebuilt an Azure live-search-per-line-item design as an n8n workflow grounded in Thomson Reuters tax code data: a reference-data lookup handles known commodities, unmatched lines escalate to a higher-capability model returning a cited proposal, and line-total mismatches route to human review.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="case" data-panel="04" open>
+    <summary class="case__head">
+      <div class="case__num" aria-hidden="true">04</div>
+      <div class="case__body">
+        <h3 class="case__title">Insurance requirements extraction and compliance benchmarking</h3>
+        <p class="case__meta">Legal · Amazon Bedrock · document intelligence</p>
+        <p class="case__blurb">Replaces clause-by-clause insurance review in acquisition diligence, then benchmarks every dollar limit against historical deal statistics.</p>
+      </div>
+      <div class="case__stat">
+        <div class="case__stat-value case__stat-value-sm">Auditable</div>
+        <div class="case__stat-label">every limit traced to its source clause</div>
+      </div>
+      <div class="case__toggle">
+        <span class="case__toggle-open">Read the Project Details</span>
+        <span class="case__toggle-close">Close</span>
+      </div>
+    </summary>
+    <div class="case__detail">
+      <ul class="case__points">
+        <li>Replaced manual clause-by-clause insurance review in acquisition diligence for the Legal team — document-intelligence workflows read purchase and sale agreements and extract every requirement with its dollar limits, then a deterministic benchmark engine flags each limit green, yellow, or red against historical deal statistics.</li>
+        <li>Made every extracted limit auditable to its source clause — a three-stage LLM chain on Amazon Bedrock handling deal context, clause extraction with verbatim quotes and page citations, then normalization of free-text limits onto standard coverage types, each stage grounded with anti-hallucination rules.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="case" data-panel="05" open>
+    <summary class="case__head">
+      <div class="case__num" aria-hidden="true">05</div>
+      <div class="case__body">
+        <h3 class="case__title">Scope creation tool</h3>
+        <p class="case__meta">Capital projects · guided generation · Word formatting preservation</p>
+        <p class="case__blurb">Turns a project manager's answers into complete construction scope-of-work documents. Used by every project manager on the team.</p>
+      </div>
+      <div class="case__stat">
+        <div class="case__stat-value">1,022</div>
+        <div class="case__stat-label">item scope corpus across 41 trade categories</div>
+      </div>
+      <div class="case__toggle">
+        <span class="case__toggle-open">Read the Project Details</span>
+        <span class="case__toggle-close">Close</span>
+      </div>
+    </summary>
+    <div class="case__detail">
+      <ul class="case__points">
+        <li>Replaced manual per-project drafting for the capital projects team with a guided generation tool that turns a project manager's answers into complete construction scope-of-work documents — now used by every project manager on the team.</li>
+        <li>Kept every generated spec traceable to precedent and correct for its site — grounded generation in a 1,022-item scope corpus and 16 templates across 41 trade categories, conditioned per trade on a 2,384-property master dataset, then an automated climate and wind pass rewrites specs for the building's environment.</li>
+        <li>Preserved Word numbering, styles, and run-level formatting through an LLM rewrite — a similarity-based merge re-aligns generated text onto the original paragraph objects and keeps the original wherever confidence is low.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="case" data-panel="06" open>
+    <summary class="case__head">
+      <div class="case__num" aria-hidden="true">06</div>
+      <div class="case__body">
+        <h3 class="case__title">Performance view chat — natural language to SQL</h3>
+        <p class="case__meta">Investment · Snowflake connector · Claude plugin</p>
+        <p class="case__blurb">Removed the Investment team's dependency on the data team for ad-hoc analysis. The Streamlit UI was later retired for a Claude plugin.</p>
+      </div>
+      <div class="case__stat">
+        <div class="case__stat-value">1,500+</div>
+        <div class="case__stat-label">properties, queried in natural language</div>
+      </div>
+      <div class="case__toggle">
+        <span class="case__toggle-open">Read the Project Details</span>
+        <span class="case__toggle-close">Close</span>
+      </div>
+    </summary>
+    <div class="case__detail">
+      <ul class="case__points">
+        <li>Built a natural-language-to-SQL system for the Investment team across 1,500+ properties, removing their dependency on the data team for ad-hoc analysis — later retiring the Streamlit UI for a Claude plugin pairing a Snowflake connector with skills encoding the team's output formats and report structures, so analysis runs directly in chat.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="case" data-panel="07" open>
+    <summary class="case__head">
+      <div class="case__num" aria-hidden="true">07</div>
+      <div class="case__body">
+        <h3 class="case__title">Property site map — data-driven rent setting</h3>
+        <p class="case__meta">Asset Management · custom GPT · Excel deliverable</p>
+        <p class="case__blurb">Generates review-ready Excel site maps for unit-level rent setting. Now the standing pricing framework for asset management.</p>
+      </div>
+      <div class="case__stat">
+        <div class="case__stat-value case__stat-value-sm">A/B tested</div>
+        <div class="case__stat-label">beat the incumbent on occupancy, income, and preference</div>
+      </div>
+      <div class="case__toggle">
+        <span class="case__toggle-open">Read the Project Details</span>
+        <span class="case__toggle-close">Close</span>
+      </div>
+    </summary>
+    <div class="case__detail">
+      <ul class="case__points">
+        <li>Built a custom GPT generating review-ready Excel site maps for unit-level rent setting — a controlled A/B test across two structurally identical halves of one property showed generated pricing beat the incumbent on occupancy, rental income, and resident preference; asset management adopted it as the standing pricing framework.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="case" data-panel="08" open>
+    <summary class="case__head">
+      <div class="case__num" aria-hidden="true">08</div>
+      <div class="case__body">
+        <h3 class="case__title">TalkFurther call center analytics</h3>
+        <p class="case__meta">Operations · in-house call analysis · Power BI</p>
+        <p class="case__blurb">Replaced a third-party batch transcript vendor with daily internal review of 3,000+ calls across 50+ properties.</p>
+      </div>
+      <div class="case__stat">
+        <div class="case__stat-value">15%</div>
+        <div class="case__stat-label">additional leads recovered from dropped conversations</div>
+      </div>
+      <div class="case__toggle">
+        <span class="case__toggle-open">Read the Project Details</span>
+        <span class="case__toggle-close">Close</span>
+      </div>
+    </summary>
+    <div class="case__detail">
+      <ul class="case__points">
+        <li>Recovered 15% additional leads from dropped conversations and drove a 3% revenue increase across 50+ properties — replaced a third-party batch transcript vendor with an in-house AI analysis system moving 3,000+ calls to daily internal review, now property managers' standing KPI via Power BI dashboards linking call topics to occupancy and conversion.</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<section class="section" id="research">
+  <p class="eyebrow">Research projects — <a href="https://github.com/jay-singhvi/" target="_blank" rel="noopener"><span class="lbl">github.com/jay-singhvi</span><span class="arrow" aria-hidden="true">&#8599;</span></a></p>
+  <h2 class="h2-xl">Retrieval, evaluation, and the cost of being wrong.</h2>
+  <div class="rule" aria-hidden="true"></div>
+
+  <details class="case" data-panel="r1" open>
+    <summary class="case__head">
+      <div class="case__num" aria-hidden="true">R1</div>
+      <div class="case__body">
+        <div class="case__title-row">
+          <h3 class="case__title">Resonate AI chatbot</h3>
+          <a class="link-ul link-ul-sm" href="https://github.com/jay-singhvi/Resonate" target="_blank" rel="noopener"><span class="lbl">View on GitHub</span><span class="arrow" aria-hidden="true">&#8599;</span></a>
         </div>
-        <div class="second">
-            <div class="fixed-content">
-                <h1>Summary</h1>
-                <p>Data Engineer with 7+ years of experience specializing in CRM platforms, cloud migrations, and data pipeline development.
-                Currently pursuing MS in Computer Science with a focus on Data Science at Seattle University. Combining practical industry
-                experience with cutting-edge research in machine learning and AI applications. Published researcher in medical data analysis
-                and environmental health prediction models.</p>
-            </div>
+        <p class="case__meta">Python · LangChain · Transformers · FAISS · Pinecone · QLoRA · AWS Transcribe</p>
+      </div>
+      <div class="case__stat">
+        <div class="case__stat-value">90%</div>
+        <div class="case__stat-label">BERT similarity, 89% precision and recall</div>
+      </div>
+      <div class="case__toggle">
+        <span class="case__toggle-open">Read the Project Details</span>
+        <span class="case__toggle-close">Close</span>
+      </div>
+    </summary>
+    <div class="case__detail">
+      <ul class="case__points">
+        <li>Reached 90% BERT similarity and 89% precision/recall with a LangChain RAG system — semantic graph clustering and overlapping chunking that preserved context across boundaries, over a FAISS and Pinecone embedding layer holding 85% cosine similarity.</li>
+        <li>Reduced response latency by 35% with a distributed inference and caching layer, and cut model cost via semantic routing across OpenAI, Anthropic, and Google models — evaluated on hallucination rate and response accuracy, with Llama 2 (7B) QLoRA fine-tuning cutting compute requirements by 50%.</li>
+      </ul>
+    </div>
+  </details>
+
+  <div class="research-note">
+    <p>Earlier research and applied ML work — asthma onset prediction, agentic synthetic data generation, agricultural computer vision, and marketing optimization — lives in the public repositories.</p>
+    <a class="link-ul link-ul-sm" href="https://github.com/jay-singhvi?tab=repositories" target="_blank" rel="noopener"><span class="lbl">Browse all repositories</span><span class="arrow" aria-hidden="true">&#8599;</span></a>
+  </div>
+</section>
+
+<script>
+/* Restore each panel's last open/closed state.
+   Deliberately inline and NOT deferred, and placed immediately after the last
+   <details>: it runs while the parser is still blocked, so a panel the visitor
+   had collapsed never flashes open first. A deferred script would run after
+   parsing but is not guaranteed to beat first paint.
+   Saving lives in js/site.js. */
+(function () {
+  window.PANEL_STATE_KEY = 'jsp.panels.v1';
+  var panels = document.querySelectorAll('details[data-panel]');
+
+  /* Record the markup default before restoring anything. js/site.js stores only
+     states that DIFFER from this, which keeps two things true: changing the
+     defaults later still reaches returning visitors, and the spurious `toggle`
+     events Chrome fires for parser-set `open` attributes write nothing.
+     Outside the try/catch below so it happens even if storage is unavailable. */
+  for (var i = 0; i < panels.length; i++) {
+    panels[i].setAttribute('data-default-open', panels[i].open ? 'true' : 'false');
+  }
+
+  try {
+    var saved = JSON.parse(localStorage.getItem(window.PANEL_STATE_KEY) || '{}');
+    for (var j = 0; j < panels.length; j++) {
+      var state = saved[panels[j].getAttribute('data-panel')];
+      if (typeof state === 'boolean') panels[j].open = state;
+    }
+  } catch (e) {
+    /* Storage disabled or Safari private mode throws on access — keep defaults. */
+  }
+})();
+</script>
+
+<section class="section" id="experience">
+  <p class="eyebrow">Experience</p>
+  <h2 class="h2-xl">Nine years across data, research, and applied AI.</h2>
+  <div class="rule" aria-hidden="true"></div>
+
+  <article class="role">
+    <div class="role__when">
+      <p class="role__dates">Aug 2025 – Present</p>
+      <p class="role__org">Welltower Inc.<br><span>Dallas, Texas</span></p>
+    </div>
+    <div class="role__what">
+      <h3 class="role__title">Senior AI Analyst — applied AI engineering</h3>
+      <ul class="role__points">
+        <li>Shipped production AI systems adopted across six departments — ChatGPT custom GPTs, Streamlit applications, and n8n workflow automation — owning each end-to-end from department requirements through UAT, deployment, logging, and failure monitoring.</li>
+        <li>Architected the shared automation platform every department workflow runs on — a queue orchestrator with a reusable sub-workflow library, atomic retry, and centralized error recovery, so adding a new department automation requires no orchestrator change.</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="role">
+    <div class="role__when">
+      <p class="role__dates">Sep 2022 – Aug 2025</p>
+      <p class="role__org">Seattle University<br><span>Seattle, Washington</span></p>
+    </div>
+    <div class="role__what">
+      <h3 class="role__title">Data Scientist — research assistant</h3>
+      <ul class="role__points">
+        <li>Predicted asthma onset at 88% accuracy — 20% better than traditional methods — with transfer-learning and PySpark ensemble models on sparse medical data, improving forecasting accuracy by 12% over standard neural networks, on HIPAA-compliant Docker and AWS pipelines.</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="role">
+    <div class="role__when">
+      <p class="role__dates">Apr 2019 – Jul 2022</p>
+      <p class="role__org">Yardi Systems<br><span>Dubai, United Arab Emirates</span></p>
+    </div>
+    <div class="role__what">
+      <h3 class="role__title">Data Engineer</h3>
+      <ul class="role__points">
+        <li>Cut implementation time and deployment cost 75% for real estate BI modules with SSIS and SQL Server ETL pipelines, and accelerated customer onboarding 60% with multi-format ingestion (batch, real-time, historical) partitioned for 40% faster processing.</li>
+        <li>Reduced data inconsistencies by 90% with real-time streaming BI dashboards and saved 20 hours weekly by automating reporting in T-SQL stored procedures, triggers, and tuned indexes.</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="role">
+    <div class="role__when">
+      <p class="role__dates">Nov 2016 – Mar 2019</p>
+      <p class="role__org">Yardi Systems<br><span>Pune, India</span></p>
+    </div>
+    <div class="role__what">
+      <h3 class="role__title">Data Engineer</h3>
+      <ul class="role__points">
+        <li>Secured $3M+ in revenue retention and lifted system usage 50% with SSIS ETL systems that streamlined lease approval workflows.</li>
+        <li>Powered real-time dashboards across 100+ KPIs with a dimensionally modeled data warehouse and data marts — 15% faster processing via incremental loading — and set the governance standards, automated testing, and query tuning behind them.</li>
+      </ul>
+    </div>
+  </article>
+</section>
+
+<section class="section" id="skills">
+  <p class="eyebrow">Technical skills</p>
+  <h2 class="h2-xl h2-xl-wide">The stack behind it.</h2>
+  <div class="rule rule-grid" aria-hidden="true"></div>
+
+  <div class="skills-grid">
+    <div>
+      <h3 class="skill__name">AI and machine learning</h3>
+      <p class="skill__list">Python · PyTorch · RAG · LLM evaluation · embeddings · vector databases (FAISS, Pinecone) · prompt engineering · guardrail and anti-hallucination design · OpenAI (GPT, custom GPTs, Compliance API) · Anthropic Claude (plugins, skills, MCP) · Amazon Bedrock · LangChain · Hugging Face · Scikit-learn</p>
+    </div>
+    <div>
+      <h3 class="skill__name">Data and analytics</h3>
+      <p class="skill__list">Snowflake (Cortex Analyst) · SQL · T-SQL · PostgreSQL · PySpark · Spark SQL · Pandas · NumPy · ETL pipeline development · SSIS · dimensional modeling · data warehousing · incremental loading · query optimization</p>
+    </div>
+    <div>
+      <h3 class="skill__name">Cloud and infrastructure</h3>
+      <p class="skill__list">AWS (S3, SageMaker, Transcribe, Bedrock) · Docker · Git · GitHub Actions CI/CD · RESTful APIs</p>
+    </div>
+    <div>
+      <h3 class="skill__name">Applications and reporting</h3>
+      <p class="skill__list">Streamlit · n8n · Power BI · Tableau · KPI dashboards · Excel</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-close" id="education">
+  <div class="two-col">
+    <div>
+      <p class="eyebrow">Education</p>
+      <h2 class="h2-md">Education</h2>
+      <div class="rule rule-tight" aria-hidden="true"></div>
+      <div class="entry">
+        <h3 class="entry__title">MS, Computer Science — data science</h3>
+        <p class="entry__meta">Seattle University, Seattle, Washington · Sept 2022 – Jun 2024</p>
+      </div>
+      <div class="entry">
+        <h3 class="entry__title">MS, Computer Applications</h3>
+        <p class="entry__meta">Symbiosis International University, India · July 2015 – Apr 2018</p>
+      </div>
+      <div class="entry">
+        <h3 class="entry__title">BS, Information Technology</h3>
+        <p class="entry__meta">University of Mumbai, Mumbai, India · Jun 2011 – Jan 2015</p>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow">Research papers — <a href="https://github.com/jay-singhvi/publications" target="_blank" rel="noopener"><span class="lbl">/publications</span><span class="arrow" aria-hidden="true">&#8599;</span></a></p>
+      <h2 class="h2-md">Publications and certifications</h2>
+      <div class="rule rule-tight" aria-hidden="true"></div>
+      <div class="entry">
+        <p class="pub__venue">DAWAK 2024</p>
+        <p class="pub__title">Incremental SMOTE with Control Coefficient for Classifiers in Data Starved Medical Applications</p>
+      </div>
+      <div class="entry">
+        <p class="pub__venue">SAC 2025</p>
+        <p class="pub__title">A Retrieval-Augmented Framework for Meeting Insight Extraction</p>
+      </div>
+      <div class="entry">
+        <p class="pub__venue">Peer review — IEEE JBHI 2025</p>
+        <p class="pub__title">Hybrid Deep Learning using Transfer Learning as Feature Extractor in Environmental Health Risk Prediction</p>
+      </div>
+      <div class="entry">
+        <p class="pub__venue">CITI Program</p>
+        <p class="pub__title">Responsible Conduct of Research – Engineers · Human Subjects Research for IRB (Faculty, Staff, and Student)</p>
+        <p class="note"><a href="https://www.linkedin.com/in/jay-singhvi/details/certifications/" target="_blank" rel="noopener">Other certificates on LinkedIn<span class="arrow" aria-hidden="true">&#8599;</span></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="shell">
+    <div class="contact__grid">
+      <div class="contact__intro">
+        <h2 class="h2-contact">Get in <em>touch.</em></h2>
+        <p class="intro intro-contact">Open to applied AI engineer, forward deployed engineer, and process-to-AI automation roles.</p>
+        <div class="contact__links">
+          <a class="contact__email" href="mailto:jay.singhvi@outlook.com"><span class="lbl">jay.singhvi@outlook.com</span><span class="tag" aria-hidden="true">Email</span></a>
+          <a class="contact__phone" href="tel:+12066603609"><span class="lbl">206-660-3609</span><span class="tag" aria-hidden="true">Call</span></a>
+          <div class="contact__socials">
+            <a class="link-ul-dark" href="https://www.linkedin.com/in/jay-singhvi/" target="_blank" rel="noopener"><span class="lbl">LinkedIn</span><span class="arrow arrow-mint" aria-hidden="true">&#8599;</span></a>
+            <a class="link-ul-dark" href="https://github.com/jay-singhvi" target="_blank" rel="noopener"><span class="lbl">GitHub</span><span class="arrow arrow-mint" aria-hidden="true">&#8599;</span></a>
+            <a class="link-ul-dark" href="https://scholar.google.com/citations?user=5BOLefYAAAAJ&amp;hl=en" target="_blank" rel="noopener"><span class="lbl">Google Scholar</span><span class="arrow arrow-mint" aria-hidden="true">&#8599;</span></a>
+            <a class="link-ul-dark" href="resume/Jay_Singhvi_Resume.pdf" target="_blank" rel="noopener"><span class="lbl">Resume</span><span class="badge badge-mint" aria-hidden="true">PDF &#8595;</span></a>
+          </div>
         </div>
-        <section class="colorlib-about" data-section="about">
-            <div class="colorlib-narrow-content">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-                        <h2>Projects</h2>
-                        <hr>
-                    </div>
-                </div>
-                <p class="animate-box" data-animate-effect="fadeInLeft">Showcasing expertise across multiple domains of data science and engineering.</p>
-                <div class="row">
-                    <script type="text/javascript">
-                        var domains = ["Data Engineering", "Machine Learning", "Research", "Cloud Architecture"];
-                        var icons = ["database", "code", "university", "cloud"];
-                        var descriptions = [
-                            "Enterprise ETL, data pipelines, and warehouse solutions optimizing business intelligence operations",
-                            "AI applications, deep learning research, and practical ML implementations",
-                            "Published academic work in medical predictions, synthetic data and environmental analysis",
-                            "AWS infrastructure, containerization, and cloud-native application development"
-                        ];
-                        var urls = [
-                            "projects/data_engineering.html",
-                            "projects/machine_learning.html",
-                            "projects/research.html",
-                            "projects/cloud.html"
-                        ];
-                        var ids = [3, 4, 2, 1];
-                        for (let i = 0; i < domains.length; i++) {
-                            var dir = (ids[i] % 2 == 0) ? "Right" : "Left";
-                            document.write(
-                                '<div class="col-sm-3 animate-box" data-animate-effect="fadeIn' + dir + '">\
-                                  <a href="' + urls[i] + '" class="page-transition-link">\
-                                    <div class="services color-' + ids[i] + '">\
-                                      <span class="icon2"><i class="fa fa-' + icons[i] + '"></i></span>\
-                                      <h3>' + domains[i] + '</h3>\
-                                      <p>' + descriptions[i] + '</p>\
-                                    </div>\
-                                  </a>\
-                                </div>'
-                            );
-                        }
-                    </script>
+      </div>
 
-                </div>
-            </div>
-        </section>
-
-        <section class="colorlib-skills" data-section="skills">
-            <div class="colorlib-narrow-content">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-                        <h2>Technical Skills</h2>
-                        <hr>
-                    </div>
-                </div>
-                <p class="animate-box" data-animate-effect="fadeInLeft">Core competencies across data engineering, cloud computing, and machine learning domains.</p>
-                <div class="container">
-                    <div class="row">
-                        <script type="text/javascript">
-                            var skills = [
-                                "Python & SQL",
-                                "AWS Services",
-                                "ETL & Pipelines",
-                                "Machine Learning",
-                                "Docker & Kubernetes",
-                                "Data Warehousing",
-                                "Research & Analysis",
-                                "Cloud Architecture"
-                            ];
-                            var value = [95, 90, 95, 85, 80, 90, 85, 85];
-                            for (let i = 0; i < skills.length; i++) {
-                                var dir = (i % 2 == 0) ? "Right" : "Left";
-                                document.write(
-                                    '<div class="col-md-6 animate-box" data-animate-effect="fadeIn' + dir + '">\
-                                      <div class="progress-wrap">\
-                                          <h3>' + skills[i] + '</h3>\
-                                          <div class="progress">\
-                                              <div class="progress-bar color-' + (i + 1) +
-                                        '" role="progressbar" aria-valuenow="' + value[i] +
-                                        '" aria-valuemin="0" aria-valuemax="100" style="width:' + value[i] + '%">\
-                                                  <span>' + value[i] + '%</span>\
-                                              </div>\
-                                          </div>\
-                                      </div>\
-                                  </div>');
-                            }
-                        </script>
-                    </div>
-                </div>
-        </section>
-
-        <section class="colorlib-experience" data-section="experience">
-            <div class="colorlib-narrow-content">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-                        <h2>Professional Experience</h2>
-                        <hr>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="timeline-centered">
-                                <script type="text/javascript">
-                                    var timeSpan = [
-                                        "Sep 2022 - Present",
-                                        "Apr 2019 - Jul 2022",
-                                        "Nov 2016 - Mar 2019",
-                                    ];
-                                    var AT = [
-                                        "Seattle University, USA",
-                                        "Yardi Systems, UAE",
-                                        "Yardi Systems, India",
-                                    ];
-                                    var internType = [
-                                        "Research Assistant",
-                                        "Data Engineer",
-                                        "Data Engineer",
-                                    ];
-                                    var descriptions = [
-                                        "Leading research in medical predictions and environmental analysis using advanced ML techniques. Published multiple papers in prestigious conferences and journals.",
-                                        "Architected comprehensive ETL pipelines and BI solutions, reducing deployment costs by 75% while maintaining 99.99% system availability.",
-                                        "Developed and optimized data warehousing solutions and ETL packages for real-time dashboard tracking of 100+ KPIs.",
-                                    ];
-                                    var iclass = ["university", "globe", "database", "code"];
-                                    var color = [5, 1, 2];
-                                    for (let i = 0; i < AT.length; i++) {
-                                        var dir = (i % 2 == 0) ? "Right" : "Left";
-                                        document.write(
-                                            '<article class="timeline-entry animate-box" data-animate-effect="fadeIn' +
-                                            dir + '">\
-                                            <div class="timeline-entry-inner">\
-                                                <div class="timeline-icon color-' + color[i] + '">\
-                                                    <i class="fa fa-' + iclass[i] + '"></i>\
-                                                </div>\
-                                                <div class="timeline-label">\
-                                                    <h2>' + AT[i] + ' <span>' + timeSpan[i] + '</span></h2>\
-                                                    <p><strong>' + internType[i] + '</strong>\
-                                                        <br> ' + descriptions[i] + '</p>\
-                                                </div>\
-                                            </div>\
-                                        </article>');
-                                    }
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="colorlib-education" data-section="education">
-            <div class="colorlib-narrow-content">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-                        <h2>Education</h2>
-                        <hr>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="timeline-centered">
-                                <script type="text/javascript">
-                                    var eduTimeSpan = [
-                                        "Sept 2022 - Jun 2024",
-                                        "July 2015 - Apr 2018",
-                                        "Jun 2011 - Jan 2015"
-                                    ];
-                                    var eduInst = [
-                                        "Seattle University",
-                                        "Symbiosis International University",
-                                        "University of Mumbai"
-                                    ];
-                                    var eduDegree = [
-                                        "MS, Computer Science (Data Science)",
-                                        "MS, Computer Applications",
-                                        "BS, Information Technology"
-                                    ];
-                                    var eduDesc = [
-                                        "Specialized in Data Science with coursework in Distributed Systems, Machine Learning, Big Data Analytics, AWS Cloud Computing, and Artificial Intelligence",
-                                        "Focus on Python, Linux scripting, Data Structure Algorithms, Database management, and Data Mining",
-                                        "Foundation in Database management, SQL, Linux, and Data Warehousing"
-                                    ];
-
-                                    for (let i = 0; i < eduInst.length; i++) {
-                                        var dir = (i % 2 == 0) ? "Right" : "Left";
-                                        document.write(
-                                            '<article class="timeline-entry animate-box" data-animate-effect="fadeIn' +
-                                            dir + '">\
-                                            <div class="timeline-entry-inner">\
-                                                <div class="timeline-icon color-' + (i+1) + '">\
-                                                    <i class="fa fa-graduation-cap"></i>\
-                                                </div>\
-                                                <div class="timeline-label">\
-                                                    <h2>' + eduInst[i] + ' <span>' + eduTimeSpan[i] + '</span></h2>\
-                                                    <p><strong>' + eduDegree[i] + '</strong>\
-                                                        <br> ' + eduDesc[i] + '</p>\
-                                                </div>\
-                                            </div>\
-                                        </article>');
-                                    }
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- JavaScript includes -->
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-        <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
-        <script src="js/jquery.easing.1.3.js"></script>
-        <script src="js/jquery.waypoints.min.js"></script>
-        <script src="js/jquery.flexslider-min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.countTo.js"></script>
-        <script src="js/services.js"></script>
-        <script src="js/modernizr-2.6.2.min.js"></script>
-        <script src="js/script.js"></script>
-        <script src="js/theme.js"></script>
-        <script src="js/page-transition.js"></script>
-        <div id="resumeModal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.9);">
-            <div style="margin:5% auto; width:90%; height:90%;">
-                <span onclick="closeResumeModal()" style="color:white; float:right; font-size:28px; cursor:pointer;">&times;</span>
-                <iframe src="resume/Jay_Singhvi_Resume.pdf" style="width:100%; height:100%; border:none;"></iframe>
-            </div>
+      <!-- action/enctype are the no-JS fallback; js/site.js supersedes them to
+           build a readable subject line. -->
+      <form class="form" id="contact-form" action="mailto:jay.singhvi@outlook.com" method="post" enctype="text/plain">
+        <div class="field">
+          <label for="cf-name">Your name</label>
+          <input id="cf-name" name="name" type="text" placeholder="Name" autocomplete="name">
         </div>
-    </body>
+        <div class="field">
+          <label for="cf-role">Role or company</label>
+          <input id="cf-role" name="role" type="text" placeholder="Applied AI engineer at…" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="cf-msg">Message</label>
+          <textarea id="cf-msg" name="message" rows="4" placeholder="What you are working on."></textarea>
+        </div>
+        <button class="btn btn-send" type="submit">Open in my mail app</button>
+        <p class="form__note">This opens a prefilled draft in your own mail client — nothing is sent from the page.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="band footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__name">Jay Singhvi</div>
+      <p class="footer__blurb">Applied AI engineer. Dallas, Texas. Shipping systems where being wrong is expensive.</p>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Jay Singhvi</span>
+      <span>jay-singhvi.github.io</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
+</body>
 </html>
