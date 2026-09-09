@@ -55,9 +55,82 @@
     });
   }
 
+  /* --- Theme ------------------------------------------------------------ */
+
+  /* index.html has already resolved and applied the theme before first paint;
+     this owns everything after that — persisting an explicit choice, keeping
+     aria-pressed in step, and continuing to track the OS until the visitor
+     overrides it. */
+
+  // Must match the key set by the inline resolver in index.html.
+  var THEME_KEY = window.THEME_KEY || 'jsp.theme.v1';
+  var root = document.documentElement;
+  var themeToggle = document.getElementById('theme-toggle');
+  var systemDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+  /* Null means "no explicit choice", which is what lets the OS keep winning. */
+  function storedTheme() {
+    try {
+      var v = localStorage.getItem(THEME_KEY);
+      return v === 'light' || v === 'dark' ? v : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function activeTheme() {
+    return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  }
+
+  function applyTheme(theme, isExplicit) {
+    root.setAttribute('data-theme', theme);
+    if (themeToggle) themeToggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+
+    /* The two <meta name="theme-color"> tags are scoped with a
+       prefers-color-scheme media attribute, so the browser picks between them
+       by OS setting — which goes stale as soon as the visitor overrides it.
+       Pointing both at the live colour makes whichever one wins the right one.
+       Read back from the stylesheet rather than hardcoded here so the palette
+       stays defined in exactly one place. */
+    if (!isExplicit) return;
+    var surface = getComputedStyle(root).getPropertyValue('--surface').trim();
+    if (!surface) return;
+    var metas = document.querySelectorAll('meta[name="theme-color"]');
+    for (var i = 0; i < metas.length; i++) metas[i].setAttribute('content', surface);
+  }
+
+  // Reconcile aria-pressed (and the metas, if overridden) with what the
+  // pre-paint script decided.
+  applyTheme(activeTheme(), storedTheme() !== null);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function () {
+      var next = activeTheme() === 'dark' ? 'light' : 'dark';
+      applyTheme(next, true);
+      try {
+        localStorage.setItem(THEME_KEY, next);
+      } catch (e) {
+        /* Storage full, disabled, or private mode: the choice still holds for
+           this page view, it just will not be remembered. */
+      }
+    });
+  }
+
+  /* Follow the OS live for as long as there is no explicit choice — a machine
+     on an automatic sunset schedule can flip mid-visit. */
+  if (systemDark) {
+    var onSystemChange = function (e) {
+      if (storedTheme()) return;
+      applyTheme(e.matches ? 'dark' : 'light', false);
+    };
+    // addListener is the pre-Safari-14 spelling.
+    if (systemDark.addEventListener) systemDark.addEventListener('change', onSystemChange);
+    else if (systemDark.addListener) systemDark.addListener(onSystemChange);
+  }
+
   /* --- Contact form ----------------------------------------------------- */
 
-  var EMAIL = 'jay.singhvi@outlook.com';
+  var EMAIL = 'jay.singhvi.1993@gmail.com';
   var form = document.getElementById('contact-form');
   if (!form) return;
 

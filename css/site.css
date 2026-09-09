@@ -74,31 +74,83 @@
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* --- Tokens ------------------------------------------------------------- */
+/* --- Tokens --------------------------------------------------------------
+
+   Colour is expressed as SURFACE + THE-FOREGROUNDS-THAT-SIT-ON-IT pairs
+   rather than as literal ink/paper names, so that the page survives being
+   inverted. Two properties of this set are what make the dark theme below a
+   short drop-in override rather than a second stylesheet:
+
+     1. Every token is named for the JOB it does, not the colour it happens
+        to be. The previous `--paper` and `--ink` each did two jobs — a
+        background AND the foreground sitting on the opposite surface — and
+        those two jobs stop sharing a value the instant the page inverts.
+        Splitting them is what keeps the buttons and chips readable.
+     2. Anything painted on a permanently-dark surface (`--on-band-*`) holds
+        its value in both themes, because the bands are dark either way. So
+        the dark theme only restates page-level tokens; band interiors,
+        including the whole contact form and footer, are inherited.
+
+   Three surfaces exist: the page (`--surface`), the full-bleed band
+   (`--band-surface`) and the teal band (`--teal`). ----------------------- */
 
 :root {
-  --paper: #fafaf8;
-  --ink: #232326;
+  color-scheme: light;
+
+  /* Brand. Deliberately identical in both themes — these are the identity. */
   --teal: #0f5c57;
   --mint: #5fd3c4;
 
-  /* Ink on paper */
-  --ink-88: rgba(35, 35, 38, 0.88);
-  --ink-82: rgba(35, 35, 38, 0.82);
-  --ink-78: rgba(35, 35, 38, 0.78);
-  --ink-62: rgba(35, 35, 38, 0.62);
-  --ink-55: rgba(35, 35, 38, 0.55);
-  --rule: rgba(35, 35, 38, 0.13);
+  /* Page surface */
+  --surface: #fafaf8;
+  --on-surface: #232326;
 
-  /* Paper on ink */
-  --paper-76: rgba(250, 250, 248, 0.76);
-  --paper-58: rgba(250, 250, 248, 0.58);
-  --paper-55: rgba(250, 250, 248, 0.55);
-  --paper-50: rgba(250, 250, 248, 0.5);
-  --paper-45: rgba(250, 250, 248, 0.45);
-  --paper-40: rgba(250, 250, 248, 0.4);
-  --paper-30: rgba(250, 250, 248, 0.3);
-  --paper-16: rgba(250, 250, 248, 0.16);
+  /* Accent foreground. Teal clears 7.5:1 on paper so it can be the accent
+     here, but it only manages 2.3:1 on the dark surface — which is why this
+     is a token of its own rather than a second use of `--teal`. */
+  --accent: #0f5c57;
+  --accent-45: rgba(15, 92, 87, 0.45);
+
+  /* Muted foregrounds on the page surface. Suffix is the alpha, not a
+     lightness step, and the tiers are a type hierarchy: 88 body copy in
+     lists, 82 blurbs, 78 ledes, 62 nav and captions, 55 small meta. */
+  --fg-88: rgba(35, 35, 38, 0.88);
+  --fg-82: rgba(35, 35, 38, 0.82);
+  --fg-78: rgba(35, 35, 38, 0.78);
+  --fg-62: rgba(35, 35, 38, 0.62);
+  --fg-55: rgba(35, 35, 38, 0.55);
+
+  /* Hairlines. `--rule` is the quiet 1px divider between list items;
+     `--rule-strong` is the deliberate full-contrast line under headings. */
+  --rule: rgba(35, 35, 38, 0.13);
+  --rule-strong: #232326;
+
+  /* The full-bleed band and its foregrounds. Dark in both themes, so every
+     value in this group is theme-independent. */
+  --band-surface: #232326;
+  --on-band: #fafaf8;
+  --on-band-76: rgba(250, 250, 248, 0.76);
+  --on-band-60: rgba(250, 250, 248, 0.6);
+  --on-band-58: rgba(250, 250, 248, 0.58);
+  --on-band-55: rgba(250, 250, 248, 0.55);
+  --on-band-50: rgba(250, 250, 248, 0.5);
+  --on-band-45: rgba(250, 250, 248, 0.45);
+  --on-band-40: rgba(250, 250, 248, 0.4);
+  --on-band-30: rgba(250, 250, 248, 0.3);
+  --on-band-16: rgba(250, 250, 248, 0.16);
+
+  /* Inverted chip: the primary button and the skip link. Always the opposite
+     polarity to the page, so both halves flip in dark mode. */
+  --chip-surface: #232326;
+  --on-chip: #fafaf8;
+
+  /* Foregrounds on the brand colours. Teal and mint do not move between
+     themes, so neither do these. */
+  --on-teal: #fafaf8;
+  --on-mint: #232326;
+
+  /* Translucent so the sticky nav frosts whatever scrolls under it. */
+  --nav-bg: rgba(250, 250, 248, 0.94);
 
   --serif: 'Instrument Serif', Georgia, serif;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
@@ -107,6 +159,59 @@
   --shell: 1280px;
   --gutter: 40px;
   --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+/* --- Dark theme ----------------------------------------------------------
+
+   `data-theme` is written to <html> before first paint by the inline script
+   in index.html, which resolves `prefers-color-scheme` unless the visitor has
+   picked a theme explicitly. Keying off the attribute rather than a media
+   query keeps these values in exactly one place; the cost is that a visitor
+   with JS disabled always gets the light theme, which is a complete site.
+
+   Absent below, and therefore shared with the light theme: --teal, --mint,
+   --on-band*, --on-teal and --on-mint. See note 2 above. ----------------- */
+
+:root[data-theme='dark'] {
+  /* Hands the native scrollbars, form controls and the browser's own
+     autofill styling to the dark palette too. */
+  color-scheme: dark;
+
+  /* Not pure black: #16161a keeps the 4-point blue cast the light theme's
+     ink carries, so the greys stay the same family. */
+  --surface: #16161a;
+  --on-surface: #ecece9;
+
+  /* Mint, already the accent on every dark band in the light theme, so the
+     dark page simply behaves the way the bands always have. 9.97:1. */
+  --accent: #5fd3c4;
+  --accent-45: rgba(95, 211, 196, 0.45);
+
+  /* Same alphas as the light theme. Over a dark surface these land HIGHER
+     than their light counterparts (55 -> 5.4:1 against 3.6:1), so every
+     tier clears AA here even though the light theme's bottom two do not. */
+  --fg-88: rgba(236, 236, 233, 0.88);
+  --fg-82: rgba(236, 236, 233, 0.82);
+  --fg-78: rgba(236, 236, 233, 0.78);
+  --fg-62: rgba(236, 236, 233, 0.62);
+  --fg-55: rgba(236, 236, 233, 0.55);
+
+  /* 0.10 matches the light divider's 1.29:1 almost exactly. `--rule-strong`
+     is NOT the full-contrast equivalent on purpose: a 15:1 hairline that
+     reads as a crisp graphic line on paper shimmers as a near-white 1px
+     line on black, so it lands at 2.6:1 instead. */
+  --rule: rgba(236, 236, 233, 0.1);
+  --rule-strong: rgba(236, 236, 233, 0.32);
+
+  /* Lifted a step above the page instead of inverting to paper, so the
+     sectional rhythm survives without a full-bleed white flash. The 1.25:1
+     step is the smallest that still reads as a distinct band. */
+  --band-surface: #292930;
+
+  --chip-surface: #ecece9;
+  --on-chip: #16161a;
+
+  --nav-bg: rgba(22, 22, 26, 0.92);
 }
 
 /* --- Base --------------------------------------------------------------- */
@@ -126,8 +231,8 @@ body {
   /* Was 360px in the previous build, which forced horizontal scrolling on
      320px-wide devices. The media queries below carry the layout down to 320. */
   min-width: 320px;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--surface);
+  color: var(--on-surface);
   font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
 }
@@ -138,23 +243,23 @@ img {
 }
 
 a {
-  color: var(--ink);
+  color: var(--on-surface);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--teal);
+  color: var(--accent);
 }
 
 ::selection {
   background: var(--teal);
-  color: var(--paper);
+  color: var(--on-teal);
 }
 
 /* The previous build set `outline:none` on every form field and replaced it
    with nothing, leaving keyboard users no visible focus point. */
 :focus-visible {
-  outline: 2px solid var(--teal);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
@@ -169,8 +274,8 @@ a:hover {
   top: 0;
   z-index: 100;
   padding: 12px 20px;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--chip-surface);
+  color: var(--on-chip);
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.13em;
@@ -179,7 +284,7 @@ a:hover {
 
 .skip-link:focus {
   left: 0;
-  color: var(--paper);
+  color: var(--on-chip);
 }
 
 @keyframes rise {
@@ -225,19 +330,19 @@ a:hover {
 }
 
 .band {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--band-surface);
+  color: var(--on-band);
 }
 
 .band-teal {
   background: var(--teal);
-  color: var(--paper);
+  color: var(--on-teal);
 }
 
 .rule {
   height: 1px;
   width: 100%;
-  background: var(--ink);
+  background: var(--rule-strong);
   margin: 44px 0 0;
 }
 
@@ -261,20 +366,20 @@ a:hover {
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .eyebrow-dark {
   margin: 0 0 30px;
-  color: rgba(250, 250, 248, 0.6);
+  color: var(--on-band-60);
 }
 
 .eyebrow a {
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .eyebrow a .lbl {
-  border-bottom: 1px solid rgba(15, 92, 87, 0.45);
+  border-bottom: 1px solid var(--accent-45);
 }
 
 .display {
@@ -333,7 +438,7 @@ a:hover {
   font-size: clamp(40px, 5vw, 76px);
   line-height: 1;
   letter-spacing: -0.025em;
-  color: var(--paper);
+  color: var(--on-band);
 }
 
 em {
@@ -349,7 +454,7 @@ em {
   max-width: 62ch;
   font-size: 19px;
   line-height: 1.55;
-  color: var(--ink-78);
+  color: var(--fg-78);
   animation: rise 0.7s var(--ease) 0.16s both;
 }
 
@@ -358,19 +463,19 @@ em {
   max-width: 58ch;
   font-size: 18px;
   line-height: 1.6;
-  color: var(--ink-78);
+  color: var(--fg-78);
 }
 
 .intro-dark {
   margin: 34px 0 0;
   max-width: 56ch;
-  color: var(--paper-76);
+  color: var(--on-band-76);
 }
 
 .intro-contact {
   margin: 26px 0 0;
   max-width: 46ch;
-  color: var(--paper-76);
+  color: var(--on-band-76);
 }
 
 .note {
@@ -386,8 +491,8 @@ em {
   display: inline-block;
   padding: 15px 28px;
   border: none;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--chip-surface);
+  color: var(--on-chip);
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 500;
@@ -398,29 +503,31 @@ em {
 
 .btn:hover {
   background: var(--teal);
-  color: var(--paper);
+  color: var(--on-teal);
 }
 
 .btn-nav {
   padding: 11px 20px;
   font-size: 11px;
   background: var(--teal);
+  color: var(--on-teal);
 }
 
 .btn-nav:hover {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--chip-surface);
+  color: var(--on-chip);
 }
 
 .btn-send {
   width: fit-content;
   font-size: 11px;
   background: var(--teal);
+  color: var(--on-teal);
 }
 
 .btn-send:hover {
   background: var(--mint);
-  color: var(--ink);
+  color: var(--on-mint);
 }
 
 /* The underline sits on .lbl, not the anchor, so it stops at the label and
@@ -433,16 +540,16 @@ em {
 }
 
 .link-ul .lbl {
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--on-surface);
   padding-bottom: 4px;
 }
 
 .link-ul:hover {
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .link-ul:hover .lbl {
-  border-bottom-color: var(--teal);
+  border-bottom-color: var(--accent);
 }
 
 .link-ul-sm {
@@ -454,11 +561,11 @@ em {
   font-size: 11px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: var(--paper);
+  color: var(--on-band);
 }
 
 .link-ul-dark .lbl {
-  border-bottom: 1px solid var(--paper-40);
+  border-bottom: 1px solid var(--on-band-40);
   padding-bottom: 4px;
 }
 
@@ -476,7 +583,7 @@ em {
   margin-left: 0.6em;
   padding: 4px 7px;
   background: var(--teal);
-  color: var(--paper);
+  color: var(--on-teal);
   font-family: var(--mono);
   font-size: 11px;
   font-weight: 500;
@@ -486,7 +593,7 @@ em {
 
 .badge-mint {
   background: var(--mint);
-  color: var(--ink);
+  color: var(--on-mint);
 }
 
 .arrow {
@@ -497,7 +604,7 @@ em {
   font-size: 15px;
   font-weight: 500;
   line-height: 1;
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .arrow-mint {
@@ -521,7 +628,7 @@ em {
   position: sticky;
   top: 0;
   z-index: 60;
-  background: rgba(250, 250, 248, 0.94);
+  background: var(--nav-bg);
   -webkit-backdrop-filter: blur(8px); /* Safari / iOS still need the prefix */
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--rule);
@@ -556,7 +663,7 @@ em {
   font-size: 11px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: var(--ink-62);
+  color: var(--fg-62);
 }
 
 .nav__actions {
@@ -564,6 +671,54 @@ em {
   display: flex;
   align-items: center;
   gap: 22px;
+}
+
+/* --- Theme toggle --------------------------------------------------------
+
+   The mark is drawn in CSS rather than set as a glyph on purpose: the mono
+   webfont here is subset to latin + latin-ext, so a ☀ or ☾ would fall out to
+   whatever the platform uses for symbols and land as colour emoji on some.
+   A half-filled circle also reads as "contrast" without committing to a
+   day/night metaphor, and it rotates to show which theme is live.
+
+   State lives on <html data-theme>, so the mark's orientation is settled by
+   the pre-paint inline script and never flashes. `aria-pressed` carries the
+   same state to assistive tech and is maintained in js/site.js. ---------- */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border: none;
+  background: none;
+  color: var(--fg-62);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+}
+
+.theme-toggle__mark {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  /* Both stops sit at 50% so there is no ramp between them — a hard edge,
+     not a gradient. currentColor ties the fill to the button's own hover and
+     focus colours for free. */
+  background: linear-gradient(90deg, currentColor 0 50%, transparent 50% 100%);
+  transition: transform 0.35s var(--ease);
+}
+
+:root[data-theme='dark'] .theme-toggle__mark {
+  transform: rotate(180deg);
 }
 
 /* --- Hero --------------------------------------------------------------- */
@@ -594,7 +749,7 @@ em {
 
 .hero__wipe {
   height: 1px;
-  background: var(--ink);
+  background: var(--rule-strong);
   margin: 44px 0 30px;
   transform-origin: left;
   animation: wipe 0.8s var(--ease) 0.3s both;
@@ -644,7 +799,7 @@ em {
   font-size: 11px;
   line-height: 1.7;
   letter-spacing: 0.05em;
-  color: var(--ink-62);
+  color: var(--fg-62);
 }
 
 /* --- Stat strip --------------------------------------------------------- */
@@ -664,7 +819,7 @@ em {
   font-size: 62px;
   line-height: 0.9;
   letter-spacing: -0.02em;
-  color: var(--paper);
+  color: var(--on-band);
 }
 
 .stat__label {
@@ -674,7 +829,7 @@ em {
   font-size: 11px;
   line-height: 1.75;
   letter-spacing: 0.08em;
-  color: var(--paper-58);
+  color: var(--on-band-58);
 }
 
 .stat__label-wide {
@@ -715,7 +870,7 @@ em {
   font-size: 52px;
   font-weight: 400;
   line-height: 0.82;
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .case__body {
@@ -738,7 +893,7 @@ em {
   font-size: 11px;
   line-height: 1.8;
   letter-spacing: 0.07em;
-  color: var(--ink-55);
+  color: var(--fg-55);
 }
 
 .case__blurb {
@@ -746,7 +901,7 @@ em {
   max-width: 52ch;
   font-size: 17px;
   line-height: 1.6;
-  color: var(--ink-82);
+  color: var(--fg-82);
 }
 
 .case__stat {
@@ -773,7 +928,7 @@ em {
   font-size: 11px;
   line-height: 1.7;
   letter-spacing: 0.06em;
-  color: var(--ink-55);
+  color: var(--fg-55);
 }
 
 .case__toggle {
@@ -785,17 +940,17 @@ em {
   font-weight: 500;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--on-surface);
 }
 
 .case__toggle span {
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--on-surface);
   padding-bottom: 4px;
 }
 
 .case__head:hover .case__toggle span {
-  border-bottom-color: var(--teal);
-  color: var(--teal);
+  border-bottom-color: var(--accent);
+  color: var(--accent);
 }
 
 .case[open] .case__toggle-open,
@@ -819,7 +974,7 @@ em {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  border-left: 1px solid var(--teal);
+  border-left: 1px solid var(--accent);
   animation: rise 0.34s var(--ease) both;
 }
 
@@ -827,7 +982,7 @@ em {
   max-width: 80ch;
   font-size: 17px;
   line-height: 1.62;
-  color: var(--ink-88);
+  color: var(--fg-88);
 }
 
 /* Research entry: the repo link sits on the title line rather than orphaned
@@ -852,7 +1007,7 @@ em {
   max-width: 66ch;
   font-size: 17px;
   line-height: 1.6;
-  color: var(--ink-82);
+  color: var(--fg-82);
 }
 
 /* --- Experience --------------------------------------------------------- */
@@ -875,7 +1030,7 @@ em {
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .role__org {
@@ -885,7 +1040,7 @@ em {
 }
 
 .role__org span {
-  color: var(--ink-55);
+  color: var(--fg-55);
 }
 
 .role__what {
@@ -915,7 +1070,7 @@ em {
   max-width: 76ch;
   font-size: 17px;
   line-height: 1.62;
-  color: var(--ink-88);
+  color: var(--fg-88);
 }
 
 /* --- Skills ------------------------------------------------------------- */
@@ -933,14 +1088,14 @@ em {
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .skill__list {
   margin: 0;
   font-size: 16px;
   line-height: 1.7;
-  color: var(--ink-88);
+  color: var(--fg-88);
 }
 
 /* --- Education and publications ----------------------------------------- */
@@ -976,7 +1131,7 @@ em {
   font-size: 11px;
   line-height: 1.8;
   letter-spacing: 0.06em;
-  color: var(--ink-55);
+  color: var(--fg-55);
 }
 
 .pub__venue {
@@ -984,7 +1139,7 @@ em {
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .pub__title {
@@ -1020,11 +1175,11 @@ em {
   width: fit-content;
   font-family: var(--serif);
   font-size: 27px;
-  color: var(--paper);
+  color: var(--on-band);
 }
 
 .contact__email .lbl {
-  border-bottom: 1px solid var(--paper-40);
+  border-bottom: 1px solid var(--on-band-40);
 }
 
 .contact__email:hover,
@@ -1041,12 +1196,12 @@ em {
   font-family: var(--mono);
   font-size: 14px;
   letter-spacing: 0.08em;
-  color: var(--paper-76);
+  color: var(--on-band-76);
 }
 
 .contact__phone .lbl {
   padding-bottom: 3px;
-  border-bottom: 1px solid var(--paper-30);
+  border-bottom: 1px solid var(--on-band-30);
 }
 
 .contact__phone:hover,
@@ -1084,7 +1239,7 @@ em {
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--paper-55);
+  color: var(--on-band-55);
 }
 
 .field input,
@@ -1093,10 +1248,10 @@ em {
   padding: 10px 2px;
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--paper-40);
+  border-bottom: 1px solid var(--on-band-40);
   font-family: var(--sans);
   font-size: 17px;
-  color: var(--paper);
+  color: var(--on-band);
 }
 
 .field textarea {
@@ -1105,7 +1260,7 @@ em {
 
 .field input::placeholder,
 .field textarea::placeholder {
-  color: var(--paper-40);
+  color: var(--on-band-40);
 }
 
 .field input:focus,
@@ -1121,13 +1276,13 @@ em {
   font-size: 11px;
   line-height: 1.75;
   letter-spacing: 0.05em;
-  color: var(--paper-50);
+  color: var(--on-band-50);
 }
 
 /* --- Footer ------------------------------------------------------------- */
 
 .footer {
-  border-top: 1px solid var(--paper-16);
+  border-top: 1px solid var(--on-band-16);
 }
 
 .footer__inner {
@@ -1158,7 +1313,7 @@ em {
   font-size: 11px;
   line-height: 1.85;
   letter-spacing: 0.07em;
-  color: var(--paper-55);
+  color: var(--on-band-55);
 }
 
 .footer__bottom {
@@ -1168,11 +1323,11 @@ em {
   justify-content: space-between;
   margin-top: 52px;
   padding-top: 24px;
-  border-top: 1px solid var(--paper-16);
+  border-top: 1px solid var(--on-band-16);
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.08em;
-  color: var(--paper-45);
+  color: var(--on-band-45);
 }
 
 /* --- Responsive. The previous build shipped no media queries at all and
@@ -1216,6 +1371,25 @@ em {
 @media (max-width: 640px) {
   :root {
     --gutter: 22px;
+  }
+
+  /* The nav's action row is already tight enough here that the wide RESUME
+     and GET IN TOUCH items overflow, so the toggle collapses to its mark.
+     Clipped rather than display:none, which would strip the button of its
+     accessible name — "Dark" still reads to a screen reader. */
+  .theme-toggle {
+    gap: 0;
+  }
+
+  .theme-toggle__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
   /* These min-widths shape the desktop flex layout, but below 640px they can
@@ -1309,6 +1483,28 @@ em {
 }
 
 @media print {
+  /* Paper is always light. Without this a visitor printing from the dark
+     theme gets #ecece9 body text on a white sheet — i.e. a blank page.
+     Matches the dark block's specificity and comes later in the file, which
+     is what lets it win; `:root` alone would not. */
+  :root[data-theme='dark'] {
+    color-scheme: light;
+    --surface: #fafaf8;
+    --on-surface: #232326;
+    --accent: #0f5c57;
+    --accent-45: rgba(15, 92, 87, 0.45);
+    --fg-88: rgba(35, 35, 38, 0.88);
+    --fg-82: rgba(35, 35, 38, 0.82);
+    --fg-78: rgba(35, 35, 38, 0.78);
+    --fg-62: rgba(35, 35, 38, 0.62);
+    --fg-55: rgba(35, 35, 38, 0.55);
+    --rule: rgba(35, 35, 38, 0.13);
+    --rule-strong: #232326;
+    --band-surface: #232326;
+    --chip-surface: #232326;
+    --on-chip: #fafaf8;
+  }
+
   .nav,
   .form,
   .case__toggle,

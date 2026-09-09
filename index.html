@@ -24,13 +24,39 @@
 <meta name="twitter:description" content="Production AI in workflows that cannot be wrong. Eight production systems across six departments at a 900-employee REIT.">
 <meta name="twitter:image" content="https://jay-singhvi.github.io/img/og-cover.jpg">
 
-<meta name="theme-color" content="#232326">
+<meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16161a" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
 <link rel="preload" href="fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/public-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/site.css">
+
+<!-- Resolve the theme before first paint. Inline and NOT deferred for the same
+     reason as the panel-state script further down: a deferred script can run
+     after the first frame, which would flash the light theme at a visitor who
+     asked for dark. css/site.css keys off [data-theme='dark'] on <html>.
+     The toggle button and persistence live in js/site.js. -->
+<script>
+(function () {
+  window.THEME_KEY = 'jsp.theme.v1';
+
+  var stored = null;
+  try {
+    stored = localStorage.getItem(window.THEME_KEY);
+  } catch (e) {
+    /* Storage disabled, full, or Safari private mode — fall through to the OS. */
+  }
+
+  /* An explicit choice always wins. With nothing stored we follow the OS, and
+     js/site.js keeps following it live if it changes mid-visit. */
+  var theme = (stored === 'light' || stored === 'dark') ? stored
+    : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+  document.documentElement.setAttribute('data-theme', theme);
+})();
+</script>
 
 <script type="application/ld+json">
 {
@@ -40,7 +66,7 @@
   "url": "https://jay-singhvi.github.io/",
   "image": "https://jay-singhvi.github.io/img/og-cover.jpg",
   "jobTitle": "Senior AI Analyst (Applied AI Engineering)",
-  "email": "mailto:jay.singhvi@outlook.com",
+  "email": "mailto:jay.singhvi.1993@gmail.com",
   "telephone": "+1-206-660-3609",
   "worksFor": { "@type": "Organization", "name": "Welltower Inc." },
   "address": { "@type": "PostalPlace", "addressLocality": "Dallas", "addressRegion": "TX", "addressCountry": "US" },
@@ -82,6 +108,14 @@
       <a class="nav__link" href="#education">Education</a>
     </div>
     <div class="nav__actions">
+      <!-- A toggle button rather than a 3-way control: `aria-pressed` carries
+           the state, so the accessible name stays the single word "Dark" and
+           reads as "Dark, not pressed" / "Dark, pressed". js/site.js keeps
+           aria-pressed in step; the mark's rotation is pure CSS. -->
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">
+        <span class="theme-toggle__mark" aria-hidden="true"></span>
+        <span class="theme-toggle__text">Dark</span>
+      </button>
       <a class="nav__link" href="resume/Jay-Singhvi-Resume.pdf" target="_blank" rel="noopener">Resume<span class="badge" aria-hidden="true">PDF &#8595;</span></a>
       <a class="btn btn-nav" href="#contact">Get in touch</a>
     </div>
@@ -560,7 +594,7 @@
         <h2 class="h2-contact">Get in <em>touch.</em></h2>
         <p class="intro intro-contact">Open to applied AI engineer, forward deployed engineer, and process-to-AI automation roles.</p>
         <div class="contact__links">
-          <a class="contact__email" href="mailto:jay.singhvi@outlook.com"><span class="lbl">jay.singhvi@outlook.com</span><span class="tag" aria-hidden="true">Email</span></a>
+          <a class="contact__email" href="mailto:jay.singhvi.1993@gmail.com"><span class="lbl">jay.singhvi.1993@gmail.com</span><span class="tag" aria-hidden="true">Email</span></a>
           <a class="contact__phone" href="tel:+12066603609"><span class="lbl">206-660-3609</span><span class="tag" aria-hidden="true">Call</span></a>
           <div class="contact__socials">
             <a class="link-ul-dark" href="https://www.linkedin.com/in/jay-singhvi/" target="_blank" rel="noopener"><span class="lbl">LinkedIn</span><span class="arrow arrow-mint" aria-hidden="true">&#8599;</span></a>
@@ -573,7 +607,7 @@
 
       <!-- action/enctype are the no-JS fallback; js/site.js supersedes them to
            build a readable subject line. -->
-      <form class="form" id="contact-form" action="mailto:jay.singhvi@outlook.com" method="post" enctype="text/plain">
+      <form class="form" id="contact-form" action="mailto:jay.singhvi.1993@gmail.com" method="post" enctype="text/plain">
         <div class="field">
           <label for="cf-name">Your name</label>
           <input id="cf-name" name="name" type="text" placeholder="Name" autocomplete="name">
