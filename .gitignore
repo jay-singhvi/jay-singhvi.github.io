@@ -7,4 +7,4 @@ _site/
 vendor/
 .vscode
 # Private resume references and interview preparation; never publish with the site.
-/temp_data/
+temp_data

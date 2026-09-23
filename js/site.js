@@ -130,7 +130,7 @@
 
   /* --- Contact form ----------------------------------------------------- */
 
-  var EMAIL = 'jay.singhvi.1993@gmail.com';
+  var EMAIL = 'jaysinghvi1993@gmail.com';
   var form = document.getElementById('contact-form');
   if (!form) return;
 
